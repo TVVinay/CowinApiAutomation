@@ -44,7 +44,7 @@ public class CowinApiTest {
     }
 
     @Test
-    public void getSessionsByDistrict(){
+    public void getVaccinesCountForDistrict(){
         LocalDate date = LocalDate.now().plusDays(1);
         String nextDate = date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         System.out.println(nextDate);
@@ -53,10 +53,18 @@ public class CowinApiTest {
         sessionsByDistrictRequest.setDate(nextDate);
 
        getSessionByDistrictResponse sessionByDistrictResponse = userClient.getSessionsByDistrict(sessionsByDistrictRequest);
-      Sessions[] sessions = sessionByDistrictResponse.getSessions();
-      for (Sessions session : sessions){
-          System.out.println(session.getVaccine());
+        Sessions[] sessions = sessionByDistrictResponse.getSessions();
+        int CoviCount = 0;
+        int CovaCount = 0;
+        for (Sessions session : sessions){
+          if(session.getVaccine().equalsIgnoreCase("COVISHIELD"))
+              CoviCount++;
+          else
+              CovaCount++;
       }
+
+        System.out.println("Total Number of Covishield for the "+nextDate+" is "+CoviCount);
+        System.out.println("Total Number of Covaxin for the "+nextDate+" is "+CovaCount);
     }
 
 }

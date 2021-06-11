@@ -7,7 +7,7 @@ public class getSessionByDistrictResponse {
 
     private Sessions[] sessions;
 
-    @JsonIgnore
+
     public Sessions[] getSessions ()
     {
         return sessions;
