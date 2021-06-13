@@ -1,6 +1,6 @@
-import SessionsByDistrict.getSessionByDistrictResponse;
 import SessionsByDistrict.Sessions;
 import SessionsByDistrict.SessionsByDistrictRequest;
+import SessionsByDistrict.getSessionByDistrictResponse;
 import States.States;
 import districts.Districts;
 import districts.getDistrictRequest;
@@ -10,8 +10,6 @@ import org.testng.annotations.Test;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
-import static java.time.LocalDate.now;
 
 public class CowinApiTest {
 
@@ -35,7 +33,7 @@ public class CowinApiTest {
         getDistrictRequest getDistrictRequest = new getDistrictRequest();
         getDistrictRequest.setId(21);
         String distId = null;
-        Districts[] districts = userClient.getDistrictsOfParticularState(getDistrictRequest.getId()).getDistricts();
+        Districts[] districts = userClient.getDistrictsOfParticularState(getDistrictRequest).getDistricts();
         for(Districts districts1 :districts) {
             if(districts1.getDistrict_name().equalsIgnoreCase("Mumbai"))
                distId = districts1.getDistrict_id();
