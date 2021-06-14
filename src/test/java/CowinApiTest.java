@@ -1,9 +1,9 @@
 import SessionsByDistrict.Sessions;
 import SessionsByDistrict.SessionsByDistrictRequest;
-import SessionsByDistrict.getSessionByDistrictResponse;
+import SessionsByDistrict.SessionByDistrictResponse;
 import States.States;
 import districts.Districts;
-import districts.getDistrictRequest;
+import districts.DistrictRequest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -30,7 +30,7 @@ public class CowinApiTest {
 
     @Test
     public void getDistrictOfSelectedState(){
-        getDistrictRequest getDistrictRequest = new getDistrictRequest();
+        DistrictRequest getDistrictRequest = new DistrictRequest();
         getDistrictRequest.setId(21);
         String distId = null;
         Districts[] districts = userClient.getDistrictsOfParticularState(getDistrictRequest).getDistricts();
@@ -38,6 +38,8 @@ public class CowinApiTest {
             if(districts1.getDistrict_name().equalsIgnoreCase("Mumbai"))
                distId = districts1.getDistrict_id();
         }
+
+        System.out.println("District Id is "+distId);
         Assert.assertEquals(distId,"395");
     }
 
@@ -50,7 +52,8 @@ public class CowinApiTest {
         sessionsByDistrictRequest.setDistrictId("395");
         sessionsByDistrictRequest.setDate(nextDate);
 
-       getSessionByDistrictResponse sessionByDistrictResponse = userClient.getSessionsByDistrict(sessionsByDistrictRequest);
+       SessionByDistrictResponse sessionByDistrictResponse = userClient
+               .getSessionsByDistrict(sessionsByDistrictRequest);
         Sessions[] sessions = sessionByDistrictResponse.getSessions();
         int CoviCount = 0;
         int CovaCount = 0;

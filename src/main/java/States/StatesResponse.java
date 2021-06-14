@@ -6,10 +6,12 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class States {
+public class StatesResponse {
 
-    private String state_name;
+    private String ttl;
 
-    private String state_id;
+    private States[] states;
+
+
 
 }

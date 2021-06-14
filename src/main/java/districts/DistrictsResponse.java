@@ -7,9 +7,10 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Districts {
+public class DistrictsResponse {
 
-    private String district_name;
-    private String district_id;
+    private Districts[] districts;
+
+    private String ttl;
 
 }

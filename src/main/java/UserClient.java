@@ -1,8 +1,8 @@
 import SessionsByDistrict.SessionsByDistrictRequest;
-import SessionsByDistrict.getSessionByDistrictResponse;
-import States.getStatesResponse;
-import districts.getDistrictRequest;
-import districts.getDistrictsResponse;
+import SessionsByDistrict.SessionByDistrictResponse;
+import States.StatesResponse;
+import districts.DistrictRequest;
+import districts.DistrictsResponse;
 import io.restassured.http.ContentType;
 
 import static io.restassured.RestAssured.given;
@@ -12,25 +12,25 @@ public class UserClient {
 
     public static final String baseURI = "https://cdn-api.co-vin.in/api/";
 
-    public getStatesResponse getSpecificState(){
+    public StatesResponse getSpecificState(){
        return given()
                .contentType(ContentType.JSON)
                .header("User-Agent", "PostmanRuntime/7.28.0")
                .when()
-               .get(baseURI+"v2/admin/location/states").as(getStatesResponse.class);
+               .get(baseURI+"v2/admin/location/states").as(StatesResponse.class);
     }
 
-    public getDistrictsResponse getDistrictsOfParticularState(getDistrictRequest getDistrictRequest){
+    public DistrictsResponse getDistrictsOfParticularState(DistrictRequest getDistrictRequest){
         return given()
                 .contentType(ContentType.JSON)
                 .header("User-Agent","PostmanRuntime/7.28.0")
                 .when()
                 .get(baseURI+"v2/admin/location/districts/"+getDistrictRequest.getId())
-                .as(getDistrictsResponse.class);
+                .as(DistrictsResponse.class);
     }
 
 
-    public getSessionByDistrictResponse getSessionsByDistrict(SessionsByDistrictRequest sessionsByDistrictRequest){
+    public SessionByDistrictResponse getSessionsByDistrict(SessionsByDistrictRequest sessionsByDistrictRequest){
         return given().log().all()
                 .contentType(ContentType.JSON)
                 .header("User-Agent","PostmanRuntime/7.28.0")
@@ -38,7 +38,7 @@ public class UserClient {
                 .queryParams("date",sessionsByDistrictRequest.getDate())
                 .when()
                 .get(baseURI+"v2/appointment/sessions/public/findByDistrict")
-                .as(getSessionByDistrictResponse.class);
+                .as(SessionByDistrictResponse.class);
     }
 
 }
