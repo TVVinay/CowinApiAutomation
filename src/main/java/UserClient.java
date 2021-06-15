@@ -9,7 +9,6 @@ import static io.restassured.RestAssured.given;
 
 public class UserClient {
 
-
     public static final String baseURI = "https://cdn-api.co-vin.in/api/";
 
     public StatesResponse getSpecificState(){
@@ -39,6 +38,8 @@ public class UserClient {
                 .when()
                 .get(baseURI+"v2/appointment/sessions/public/findByDistrict")
                 .as(SessionByDistrictResponse.class);
+
+
     }
 
 }

@@ -1,9 +1,9 @@
+import SessionsByDistrict.SessionByDistrictResponse;
 import SessionsByDistrict.Sessions;
 import SessionsByDistrict.SessionsByDistrictRequest;
-import SessionsByDistrict.SessionByDistrictResponse;
 import States.States;
-import districts.Districts;
 import districts.DistrictRequest;
+import districts.Districts;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -66,6 +66,7 @@ public class CowinApiTest {
 
         System.out.println("Total Number of Covishield for the "+nextDate+" is "+CoviCount);
         System.out.println("Total Number of Covaxin for the "+nextDate+" is "+CovaCount);
+
     }
 
 }

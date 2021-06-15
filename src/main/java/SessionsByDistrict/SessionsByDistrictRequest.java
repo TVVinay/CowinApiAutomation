@@ -1,6 +1,4 @@
 package SessionsByDistrict;
-
-
 import lombok.*;
 
 @Getter

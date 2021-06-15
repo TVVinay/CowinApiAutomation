@@ -1,10 +1,6 @@
 package SessionsByDistrict;
 
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
@@ -27,7 +23,7 @@ public class Sessions {
 
     private String available_capacity;
 
-    private String long1;
+    private String Long;
 
     private String district_name;
 
